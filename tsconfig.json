@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "public/src",
+    "baseUrl": "src/ts",
     "outDir": "./dist",
     "module": "esnext",
     "target": "es6",
@@ -19,7 +19,7 @@
     ],
     "paths": {
       "@/*": [
-        "public/src/*"
+        "src/src/*"
       ]
     }
   },
@@ -31,7 +31,7 @@
     "acceptance-tests",
     "webpack",
     "jest",
-    "public/src/setupTests.ts"
+    "src/src/setupTests.ts"
   ]
 }
 
