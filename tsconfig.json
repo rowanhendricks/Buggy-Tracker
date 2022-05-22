@@ -1,10 +1,37 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "ESNext",
-    "allowJs": true,
-    "moduleResolution": "node"
+    "baseUrl": "public/src",
+    "outDir": "./dist",
+    "module": "esnext",
+    "target": "es6",
+    "lib": [
+      "dom",
+      "es2015.core",
+      "es2015.promise",
+      "es5",
+      "esnext.array",
+      "es2017.object",
+      "es6",
+      "es2015.iterable",
+      "es2015.generator",
+      "es2015.symbol",
+      "es7"
+    ],
+    "paths": {
+      "@/*": [
+        "public/src/*"
+      ]
+    }
   },
+  "exclude": [
+    "node_modules",
+    "config",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "public/src/setupTests.ts"
+  ]
 }
+
