@@ -3,10 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: "development",
   devtool: 'inline-source-map',
-  entry: "./src/index.ts",
+  entry: {
+    index: './src/ts/index.ts',
+    issue: './src/ts/issue.ts',
+  },
   output: {
     path: __dirname + '/dist',
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     publicPath: '/',
   },
   module: {
@@ -19,7 +22,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.html', '.ts', '.js'],
+    extensions: ['.txt', '.html', '.ts', '.js'],
   },
   devServer: {
     static: __dirname + '/dist',
@@ -30,7 +33,20 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Buggy Tracker',
       filename: 'index.html',
-      template: './src/template/index.html'
+      template: './src/template/index.html',
+      scriptLoading: 'module',
+      chunks: [
+        'index'
+      ]
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Create Issue',
+      filename: 'createIssue.html',
+      template: './src/template/createIssue.html',
+      scriptLoading: 'module',
+      chunks: [
+        'issue'
+      ]
     }),
   ],
 }
