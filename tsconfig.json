@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "src/ts",
+    "baseUrl": "src",
     "outDir": "./dist",
     "module": "esnext",
     "target": "es6",
+    "sourceMap": true,
     "lib": [
       "dom",
       "es2015.core",
