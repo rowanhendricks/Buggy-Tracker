@@ -14,6 +14,4 @@ issueForm.addEventListener("submit", async e => {
     }
   ]
   localStorage.setItem("Issues", JSON.stringify(data))
-  console.log(data)
-  console.log("submitted")
 })
