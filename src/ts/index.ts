@@ -18,16 +18,45 @@ function createIssue(issue: any, id: string) {
   deleteButton.innerText = "Delete"
 
   deleteButton.addEventListener("click", async e => {
-    const id = Number((e.target as HTMLElement).id)
     issues.splice(id, 1)
-
     localStorage.setItem("Issues", JSON.stringify(issues))
     location.reload();
   })
+
+  const editButton = document.createElement("button")
+  editButton.id = id
+  editButton.innerText = "Edit"
+
+  editButton.addEventListener("click", async e => {
+    const editingIssues = JSON.parse(localStorage.getItem('Issues')) || []
+    issueElement.innerHTML = ''
+    
+    const editForm = document.createElement("form") 
+    const editTitle = document.createElement("input")
+    const editDesc = document.createElement("input")
+    const editSubmit = document.createElement("button")
+    editButton.type = "submit"
+    editButton.hidden = true
+    
+    editForm.addEventListener("submit", e => {
+      editingIssues[id] = {
+        title: editTitle.value,
+        description: editDesc.value
+      }
+      localStorage.setItem("Issues", JSON.stringify(editingIssues))
+    })
+
+    editForm.appendChild(editTitle)
+    editForm.appendChild(editDesc)
+    editForm.appendChild(editSubmit)
+    issueElement.appendChild(editForm)
+  })
+
   
   issueElement.appendChild(title)
   issueElement.appendChild(description)
   issueElement.appendChild(deleteButton)
+  issueElement.appendChild(editButton)
 
   return issueElement
 }
