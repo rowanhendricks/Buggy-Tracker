@@ -1,6 +1,7 @@
+const searchBar = document.getElementById("search-bar") as HTMLInputElement
 const list = document.getElementById("list")
 
-const issues = JSON.parse(localStorage.getItem("Issues"))
+const issues = JSON.parse(localStorage.getItem("Issues")) || []
 
 function createIssue(issue: any, id: string) {
   const issueElement = document.createElement("div")
@@ -17,11 +18,10 @@ function createIssue(issue: any, id: string) {
   deleteButton.innerText = "Delete"
 
   deleteButton.addEventListener("click", async e => {
-    const temp = [...issues]
     const id = Number((e.target as HTMLElement).id)
-    temp.splice(id, 1)
+    issues.splice(id, 1)
 
-    localStorage.setItem("Issues", JSON.stringify(temp))
+    localStorage.setItem("Issues", JSON.stringify(issues))
     location.reload();
   })
   
@@ -36,3 +36,4 @@ issues.forEach((issue, index) => {
   const issueElement = createIssue(issue, String(index))
   list.appendChild(issueElement)
 });
+

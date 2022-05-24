@@ -15,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
@@ -35,6 +35,8 @@ module.exports = {
       filename: 'index.html',
       template: './src/template/index.html',
       scriptLoading: 'module',
+      publicPath: 'auto',
+      inject: 'body',
       chunks: [
         'index'
       ]
@@ -44,6 +46,7 @@ module.exports = {
       filename: 'createIssue.html',
       template: './src/template/createIssue.html',
       scriptLoading: 'module',
+      inject: 'body',
       chunks: [
         'issue'
       ]
