@@ -1,3 +1,4 @@
+import "../style/issue.css";
 import { writeFile, readTextFile } from "../../node_modules/@tauri-apps/api/fs"
 
 const issueForm = document.getElementById("issue-form")

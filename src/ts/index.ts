@@ -1,3 +1,5 @@
+import "../style/index.css";
+
 const searchBar = document.getElementById("search-bar") as HTMLInputElement
 const list = document.getElementById("list")
 
@@ -5,17 +7,20 @@ const issues = JSON.parse(localStorage.getItem("Issues")) || []
 
 function createIssue(issue: any, id: string) {
   const issueElement = document.createElement("div")
+  issueElement.className = "item"
   issueElement.id = id
 
   const title = document.createElement("h1")
+  title.className = "title"
   title.innerText = issue.title
 
   const description = document.createElement("p")
+  description.className = "description"
   description.innerText = issue.description
-
+  
   const deleteButton = document.createElement("button")
-  deleteButton.id = id
-  deleteButton.innerText = "Delete"
+  deleteButton.className = "delete-button"
+  deleteButton.innerText = "🗑️"
 
   deleteButton.addEventListener("click", async e => {
     issues.splice(id, 1)
@@ -24,8 +29,8 @@ function createIssue(issue: any, id: string) {
   })
 
   const editButton = document.createElement("button")
-  editButton.id = id
-  editButton.innerText = "Edit"
+  editButton.className = "edit-button"
+  editButton.innerText = "✏️"
 
   editButton.addEventListener("click", async e => {
     const editingIssues = JSON.parse(localStorage.getItem('Issues')) || []
@@ -35,8 +40,8 @@ function createIssue(issue: any, id: string) {
     const editTitle = document.createElement("input")
     const editDesc = document.createElement("input")
     const editSubmit = document.createElement("button")
-    editButton.type = "submit"
-    editButton.hidden = true
+    editSubmit.type = "submit"
+    editSubmit.hidden = true
     
     editForm.addEventListener("submit", e => {
       editingIssues[id] = {
