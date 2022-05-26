@@ -12,5 +12,16 @@
     <button>Create Issue</button>
   </a>
   <div class="list" id="list"></div>
+  <div id="base-item" hidden>
+    <h1 class="title"></h1>
+    <p class="description"></p>
+    <button class="delete-button">🗑️</button>
+    <button class="edit-button">✏️</button>
+    <form id="edit-form" hidden>
+      <input type="text" placeholder="title">
+      <input type="text" placeholder="description">
+      <button type="submit" hidden></button>
+    </form>
+  </div>
 </body>
 </html>
