@@ -8,3 +8,8 @@ fn main() {
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
+
+#[tauri::command]
+fn say_hi() -> String{
+  "Hello, world!".to_string()
+} 

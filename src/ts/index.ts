@@ -1,48 +1,51 @@
+import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
+import { Issue } from "types";
 import "../style/index.css";
+invoke('say_hi')
 
 const searchBar = document.getElementById("search-bar") as HTMLInputElement
 const list = document.getElementById("list")
 const baseItem = document.getElementById("base-item")
 
-const issues = JSON.parse(localStorage.getItem("Issues")) || []
+const issues: Issue[] = JSON.parse(localStorage.getItem("Issues")) ?? []
 
 issues.forEach((issue, index) => {
   const clone = baseItem.cloneNode(true) as HTMLDivElement
-  const title = clone.childNodes[1] as HTMLElement
-  const description = clone.childNodes[3] as HTMLElement
-  const deleteButton = clone.childNodes[5] as HTMLButtonElement
-  const editButton = clone.childNodes[7] as HTMLButtonElement
+  clone.id = index.toString()
+
+  list.appendChild(clone)
+
+  const title = document.getElementsByClassName("title")[index] as HTMLElement
+  const description = document.getElementsByClassName("description")[index] as HTMLElement
+  const deleteButton = document.getElementsByClassName("delete-button")[index] as HTMLButtonElement
+  const editButton = document.getElementsByClassName("edit-button")[index] as HTMLButtonElement
 
   title.innerText = issue.title
   
   description.innerText = issue.description
 
-  deleteButton.addEventListener("click", async e => {
+  deleteButton.addEventListener("click", e => {
     issues.splice(index, 1)
     localStorage.setItem("Issues", JSON.stringify(issues))
     location.reload();
   })
 
-  editButton.addEventListener("click", async e => {
-    const editingIssues = JSON.parse(localStorage.getItem('Issues')) || []
-    const editForm = clone.childNodes[9] as HTMLFormElement
+  editButton.addEventListener("click", e => {
+    const editForm = document.getElementsByClassName("edit-form")[index] as HTMLFormElement
     editForm.hidden = false
 
-    const editTitle = editForm.childNodes[1] as HTMLInputElement
-    const editDesc = editForm.childNodes[3] as HTMLInputElement
+    const editTitle = document.getElementsByClassName("edit-title")[index] as HTMLInputElement
+    const editDesc = document.getElementsByClassName("edit-desc")[index] as HTMLInputElement
 
     editForm.addEventListener("submit", e => {
-      editingIssues[index] = {
+      issues[index] = {
         title: editTitle.value,
         description: editDesc.value
       }
-      localStorage.setItem("Issues", JSON.stringify(editingIssues))
+      localStorage.setItem("Issues", JSON.stringify(issues))
     })
   })
 
   clone.hidden = false
-
-  console.log(clone.childNodes)
-  list.appendChild(clone)
 });
 
