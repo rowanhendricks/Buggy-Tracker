@@ -15,13 +15,13 @@ invoke('read_issue')
       list.appendChild(clone)
     
       const title = document.getElementsByClassName("title")[index] as HTMLElement
-      const description = document.getElementsByClassName("description")[index] as HTMLElement
+      const link = document.getElementsByClassName("link")[index] as HTMLElement
       const deleteButton = document.getElementsByClassName("delete-button")[index] as HTMLButtonElement
       const editButton = document.getElementsByClassName("edit-button")[index] as HTMLButtonElement
     
       title.innerText = issue.title
-      
-      description.innerText = issue.description
+
+      link.setAttribute("href", "./issue.html?id=" + index)
     
       deleteButton.addEventListener("click", e => {
         invoke("delete_issue", { id: index })
@@ -51,4 +51,5 @@ invoke('read_issue')
   .catch(err => {
     console.log(err)
   })
+
 

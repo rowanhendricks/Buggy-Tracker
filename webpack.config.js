@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     index: './src/ts/index.ts',
     issue: './src/ts/issue.ts',
+    createIssue: './src/ts/createIssue.ts',
   },
   output: {
     path: __dirname + '/dist',
@@ -54,6 +55,16 @@ module.exports = {
       title: 'Create Issue',
       filename: 'createIssue.html',
       template: './src/template/createIssue.html',
+      scriptLoading: 'module',
+      inject: 'body',
+      chunks: [
+        'createIssue',
+      ]
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Issue',
+      filename: 'issue.html',
+      template: './src/template/issue.html',
       scriptLoading: 'module',
       inject: 'body',
       chunks: [

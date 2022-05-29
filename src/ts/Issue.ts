@@ -1,13 +1,16 @@
-import "../style/issue.css";
 import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
 
-const issueForm = document.getElementById("issue-form")
-const title = document.getElementById("title") as HTMLInputElement
-const description = document.getElementById("description") as HTMLInputElement
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
 
-issueForm.addEventListener("submit", e => {
-  invoke('create_issue', {
-    title: title.value, 
-    description: description.value
+const id = params.id
+
+invoke('read_issue')
+  .then(issues => {
+    const issue = issues[id]
+    const title = document.getElementById('title')
+    const description = document.getElementById('description')
+
+    title.innerText = issue.title
+    description.innerText = issue.description
   })
-})
