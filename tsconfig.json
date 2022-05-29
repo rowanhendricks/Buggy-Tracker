@@ -3,7 +3,7 @@
     "baseUrl": "./src/ts",
     "outDir": "./dist/ts",
     "module": "esnext",
-    "target": "esnext",
+    "target": "es6",
     "sourceMap": true,
     "lib": [
       "dom",
