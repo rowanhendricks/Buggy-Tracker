@@ -6,8 +6,12 @@ const title = document.getElementById("title") as HTMLInputElement
 const description = document.getElementById("description") as HTMLInputElement
 
 issueForm.addEventListener("submit", e => {
-  invoke('create_issue', {
-    title: title.value, 
-    description: description.value
-  })
+  try {
+    invoke('create_issue', {
+      title: title.value, 
+      description: description.value
+    })
+  } catch (error) {
+    console.error(error)
+  }
 })

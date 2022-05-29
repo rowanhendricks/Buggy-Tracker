@@ -47,7 +47,7 @@ fn main() {
 
   #[tauri::command]
   fn create_issue(title: String, description: String) {
-    let mut issue = read_issue(); 
+    let mut issue = read_issue();
   
     issue.push(Issue {
       title,

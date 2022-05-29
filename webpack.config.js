@@ -31,6 +31,9 @@ module.exports = {
       },
     ],
   },
+  experiments: {
+    topLevelAwait: true,
+  },
   resolve: {
     extensions: ['.ts', '.js'],
   },
