@@ -8,7 +8,7 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/ShungJung/BuggyTracker">
+  <a href="https://github.com/ShungJung/Buggy-Tracker">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -17,14 +17,14 @@
   <p align="center">
     Buggy-Tracker subtitle
     <br />
-    <a href="https://github.com/ShungJung/BuggyTracker"><strong>Docs »</strong></a>
+    <a href="https://github.com/ShungJung/Buggy-Tracker"><strong>Docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/ShungJung/BuggyTracker">Demo</a>
+    <a href="https://github.com/ShungJung/Buggy-Tracker">Demo</a>
     ·
-    <a href="https://github.com/ShungJung/BuggyTracker/issues">Report Bug</a>
+    <a href="https://github.com/ShungJung/Buggy-Tracker/issues">Report Bug</a>
     ·
-    <a href="https://github.com/ShungJung/BuggyTracker/issues">Request Feature</a>
+    <a href="https://github.com/ShungJung/Buggy-Tracker/issues">Request Feature</a>
   </p>
 </div>
 
@@ -127,7 +127,7 @@ _For more examples, please refer to the [Documentation](https://google.com)_
     - [ ] Chinese
     - [ ] Spanish
 
-See the [open issues](https://github.com/ShungJung/BuggyTracker/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/ShungJung/Buggy-Tracker/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -160,7 +160,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ShungJung - [dawger#0657](https://discord.com) - shung.jung.1@gmail.com
 KielKing - [@GitHub](https://github.com/KielKing) - me@kielking.com
 
-Project Link: [https://github.com/ShungJung/BuggyTracker](https://github.com/ShungJung/BuggyTracker)
+Project Link: [https://github.com/ShungJung/Buggy-Tracker](https://github.com/ShungJung/Buggy-Tracker)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -181,14 +181,14 @@ Use this space to list resources you find helpful and would like to give credit 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/ShungJung/BuggyTracker.svg?style=for-the-badge
-[contributors-url]: https://github.com/ShungJung/BuggyTracker/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ShungJung/BuggyTracker.svg?style=for-the-badge
-[forks-url]: https://github.com/ShungJung/BuggyTracker/network/members
-[stars-shield]: https://img.shields.io/github/stars/ShungJung/BuggyTracker.svg?style=for-the-badge
-[stars-url]: https://github.com/ShungJung/BuggyTracker/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ShungJung/BuggyTracker.svg?style=for-the-badge
-[issues-url]: https://github.com/ShungJung/BuggyTracker/issues
-[license-shield]: https://img.shields.io/github/license/ShungJung/BuggyTracker.svg?style=for-the-badge
-[license-url]: https://github.com/ShungJung/BuggyTracker/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+[contributors-url]: https://github.com/ShungJung/Buggy-Tracker/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+[forks-url]: https://github.com/ShungJung/Buggy-Tracker/network/members
+[stars-shield]: https://img.shields.io/github/stars/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+[stars-url]: https://github.com/ShungJung/Buggy-Tracker/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+[issues-url]: https://github.com/ShungJung/Buggy-Tracker/issues
+[license-shield]: https://img.shields.io/github/license/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+[license-url]: https://github.com/ShungJung/Buggy-Tracker/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
