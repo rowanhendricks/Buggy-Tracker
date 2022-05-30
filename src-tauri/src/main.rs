@@ -3,8 +3,8 @@
   windows_subsystem = "windows"
 )]
 
-pub mod crud;
-use crud::{create_issue, read_issue, update_issue, delete_issue};
+pub mod commands;
+use commands::crud::{create_issue, read_issue, update_issue, delete_issue};
 
 pub mod menu;
 use menu::{generate_menu, menu_handler};
