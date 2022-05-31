@@ -4,7 +4,7 @@
 )]
 
 pub mod commands;
-use commands::crud::{create_issue, read_issue, update_issue, delete_issue};
+use commands::crud::{create_issue, read_issue, update_issue, delete_issue, create_project, read_project, update_project, delete_project};
 
 pub mod menu;
 use menu::{generate_menu, menu_handler};
@@ -18,6 +18,10 @@ fn main() {
       read_issue,
       update_issue,
       delete_issue,
+      create_project,
+      read_project,
+      update_project,
+      delete_project
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

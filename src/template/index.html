@@ -7,30 +7,17 @@
   <title>Document</title>
 </head>
 <body>
-  
-  <input class="search-bar" type="text" placeholder="Search...">
-  
-  <a class="create-issue" href="./createIssue.html">
-    <button>Create Issue</button>
-  </a>
-  
-  <fieldset>
-    <legend><h1>Issue</h1></legend>
+  <form id="project-form">
+    <input type="text" id="name">
+    <button type="submit">Create</button>
+  </form>
+  <ul id="project-list">
 
-    <ul id="list">
-      
-    </ul>
-  </fieldset>
-
-  <li id="base-item" hidden>
-    <a class="link"><h2 class="title"></h2></a>
-    <button class="delete-button">🗑️</button>
-    <button class="edit-button">✏️</button>
-    <form class="edit-form" hidden>
-      <input type="text" placeholder="title" class="edit-title">
-      <input type="text" placeholder="description" class="edit-desc">
-      <button type="submit" hidden></button>
-    </form>
+  </ul>
+  <li id="base-el" hidden>
+    <a class="link" href="">
+      <h1 class="name"></h1>
+    </a>
   </li>
 </body>
 </html>

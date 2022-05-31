@@ -8,6 +8,7 @@ module.exports = {
     index: './src/ts/index.ts',
     issue: './src/ts/issue.ts',
     createIssue: './src/ts/createIssue.ts',
+    project: './src/ts/project.ts',
   },
   output: {
     path: __dirname + '/dist',
@@ -69,6 +70,16 @@ module.exports = {
       inject: 'body',
       chunks: [
         'issue',
+      ]
+    }),    
+    new HtmlWebpackPlugin({
+      title: 'Project',
+      filename: 'project.html',
+      template: './src/template/project.html',
+      scriptLoading: 'module',
+      inject: 'body',
+      chunks: [
+        'project',
       ]
     }),
     new MiniCssExtractPlugin({

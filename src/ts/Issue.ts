@@ -6,13 +6,11 @@ import "../style/issue.css";
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
-const id = params.id
-
 async function issue() {
   try {
-    const issues = await invoke('read_issue');
+    const issues = await invoke('read_issue', { project: params.name });
 
-    const issue = issues[id]
+    const issue = issues[params.id]
 
     const title = document.getElementById('title')
     const description = document.getElementById('description')
