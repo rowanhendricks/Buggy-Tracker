@@ -1,5 +1,6 @@
 import { Issue } from "types";
 import "../style/index.css";
+import { appWindow } from "../../node_modules/@tauri-apps/api/window";
 import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
 
 const searchBar = document.getElementById("search-bar") as HTMLInputElement
@@ -8,6 +9,8 @@ const baseItem = document.getElementById("base-item")
 
 async function index() {
   try {
+    appWindow.setTitle("Buggy Tracker")
+
     const issues: Issue[] = await invoke('read_issue');
     
     issues.forEach((issue, index) => {
