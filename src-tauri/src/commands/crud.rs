@@ -74,19 +74,17 @@ pub fn delete_project(id: i32) {
 }    
 
 #[tauri::command]
-pub fn create_issue(title: String, description: String, project: String) {
+pub fn create_issue(title: String, description: String, project_id: i32) {
   let mut projects = read_project();
-
-  let index = projects.iter().position(|r| r.name == project).unwrap();
   
-  let mut issue = read_issue(project);
+  let mut issue = read_issue(project_id);
 
   issue.push(Issue {
     title,
     description,
   });
   
-  projects[index].issues = issue;
+  projects[project_id as usize].issues = issue;
 
   let projects_json = serde_json::to_string(&projects).unwrap();
 
@@ -96,33 +94,26 @@ pub fn create_issue(title: String, description: String, project: String) {
 }
 
 #[tauri::command]
-pub fn read_issue(project: String) -> Vec<Issue> {
+pub fn read_issue(project_id: i32) -> Vec<Issue> {
   let projects = read_project();
 
-  let issues: Vec<Issue> = projects
-    .iter()
-    .find(|p| p.name == project)
-    .unwrap()
-    .issues
-    .clone();
+  let issues: Vec<Issue> = projects[project_id as usize].issues.clone();
   
   return issues;
 }
 
 #[tauri::command]
-pub fn update_issue(title: String, description: String, project: String, id: i32) {
+pub fn update_issue(title: String, description: String, project_id: i32, id: i32) {
   let mut projects = read_project();
-
-  let index = projects.iter().position(|r| r.name == project).unwrap();
   
-  let mut issue = read_issue(project);
+  let mut issue = read_issue(project_id);
 
   issue[id as usize] = Issue {
     title,
     description,
   };
 
-  projects[index].issues = issue;
+  projects[project_id as usize].issues = issue;
 
   let projects_json = serde_json::to_string(&projects).unwrap();
 
@@ -132,16 +123,14 @@ pub fn update_issue(title: String, description: String, project: String, id: i32
 }
 
 #[tauri::command]
-pub fn delete_issue(id: i32, project: String) {
+pub fn delete_issue(id: i32, project_id: i32) {
   let mut projects = read_project();
-
-  let index = projects.iter().position(|r| r.name == project).unwrap();
   
-  let mut issue = read_issue(project);
+  let mut issue = read_issue(project_id);
 
   issue.remove(id as usize);
   
-  projects[index].issues = issue;
+  projects[project_id as usize].issues = issue;
 
   let projects_json = serde_json::to_string(&projects).unwrap();
 

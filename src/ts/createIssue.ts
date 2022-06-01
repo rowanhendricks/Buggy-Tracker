@@ -10,13 +10,14 @@ const params = Object.fromEntries(urlSearchParams.entries());
 
 issueForm.addEventListener("submit", async e => {
   e.preventDefault()
+  console.log(params.id)
   try {
     await invoke('create_issue', {
       title: title.value, 
       description: description.value,
-      project: params.name
+      projectId: Number(params.id)
     })
-    location.href = `./project.html?name=${params.name}`
+    location.href = `./project.html?id=${params.id}`
   } catch (error) {
     console.error(error)
   }

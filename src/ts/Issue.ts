@@ -1,3 +1,4 @@
+import { Issue } from "types";
 import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
 import { appWindow } from "../../node_modules/@tauri-apps/api/window";
 
@@ -7,8 +8,9 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
 async function issue() {
+  console.log(params);
   try {
-    const issues = await invoke('read_issue', { project: params.name });
+    const issues: Issue[] = await invoke('read_issue', { projectId: Number(params.projId) });
 
     const issue = issues[params.id]
 

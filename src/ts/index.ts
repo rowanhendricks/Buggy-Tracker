@@ -33,7 +33,7 @@ async function index() {
       const link = document.getElementsByClassName("link")[index] as HTMLAnchorElement;
 
       projectName.innerText = project.name;
-      link.setAttribute("href", `./project.html?name=${project.name}`);
+      link.setAttribute("href", `./project.html?id=${index}`);
 
       clone.hidden = false
     })

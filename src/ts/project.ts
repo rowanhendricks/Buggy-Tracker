@@ -12,13 +12,12 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
 async function project() {
-  
   try {
     appWindow.setTitle("Buggy Tracker")
 
-    const issues: Issue[] = await invoke('read_issue', { project: params.name });
+    const issues: Issue[] = await invoke('read_issue', { projectId: Number(params.id) });
     
-    createIssue.setAttribute('href', `/createIssue.html?name=${params.name}`)
+    createIssue.setAttribute('href', `/createIssue.html?id=${params.id}`)
     
     issues.forEach((issue, index) => {
       const clone = baseItem.cloneNode(true) as HTMLDivElement
@@ -33,11 +32,14 @@ async function project() {
   
       title.innerText = issue.title
   
-      link.setAttribute("href", `./issue.html?id=${index}&name=${params.name}`)
+      link.setAttribute("href", `./issue.html?id=${index}&projId=${params.id}`)
   
       deleteButton.addEventListener("click", async e => {
         try {
-          await invoke("delete_issue", { id: index, project: params.name })
+          await invoke("delete_issue", { 
+            id: index, 
+            projectId: Number(params.id)
+          })
           location.reload();
         } catch (error) {
           console.error(error)
@@ -57,7 +59,7 @@ async function project() {
               title: editTitle.value, 
               description: editDesc.value,
               id: index,
-              project: params.name
+              projectId: Number(params.id)
             })
             location.reload();
           } catch (error) {
@@ -69,7 +71,7 @@ async function project() {
       clone.hidden = false
     });
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }  
 }
 
