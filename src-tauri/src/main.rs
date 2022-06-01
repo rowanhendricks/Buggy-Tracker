@@ -25,6 +25,7 @@ fn main() {
       read_project,
       update_project,
       delete_project,
+      test
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
