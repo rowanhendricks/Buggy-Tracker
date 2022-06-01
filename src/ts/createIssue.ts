@@ -15,7 +15,7 @@ issueForm.addEventListener("submit", async e => {
     await invoke('create_issue', {
       title: title.value, 
       description: description.value,
-      projectId: Number(params.id)
+      projectId: params.id
     })
     location.href = `./project.html?id=${params.id}`
   } catch (error) {

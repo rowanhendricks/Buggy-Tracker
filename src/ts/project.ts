@@ -15,11 +15,11 @@ async function project() {
   try {
     appWindow.setTitle("Buggy Tracker")
 
-    const issues: Issue[] = await invoke('read_issue', { projectId: Number(params.id) });
-    
+    const issues: Map<string, Issue> = await invoke('read_issue', { projectId: params.id });
+
     createIssue.setAttribute('href', `/createIssue.html?id=${params.id}`)
-    
-    issues.forEach((issue, index) => {
+
+    Object.keys(issues).forEach((key, index) => {
       const clone = baseItem.cloneNode(true) as HTMLDivElement
       clone.id = index.toString()
   
@@ -30,15 +30,15 @@ async function project() {
       const deleteButton = document.getElementsByClassName("delete-button")[index] as HTMLButtonElement
       const editButton = document.getElementsByClassName("edit-button")[index] as HTMLButtonElement
   
-      title.innerText = issue.title
+      title.innerText = issues[key].title
   
-      link.setAttribute("href", `./issue.html?id=${index}&projId=${params.id}`)
+      link.setAttribute("href", `./issue.html?id=${key}&projId=${params.id}`)
   
       deleteButton.addEventListener("click", async e => {
         try {
           await invoke("delete_issue", { 
-            id: index, 
-            projectId: Number(params.id)
+            issueId: key, 
+            projectId: params.id,
           })
           location.reload();
         } catch (error) {
@@ -59,8 +59,8 @@ async function project() {
             await invoke('update_issue', {
               title: editTitle.value, 
               description: editDesc.value,
-              id: index,
-              projectId: Number(params.id)
+              issueId: key,
+              projectId: params.id,
             })
             location.reload();
           } catch (error) {

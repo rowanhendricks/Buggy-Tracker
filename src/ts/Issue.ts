@@ -8,10 +8,9 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
 async function issue() {
-  console.log(params);
   try {
-    const issues: Issue[] = await invoke('read_issue', { projectId: Number(params.projId) });
-
+    const issues: Map<string, Issue> = await invoke('read_issue', { projectId: params.projId });
+    
     const issue = issues[params.id]
 
     const title = document.getElementById('title')

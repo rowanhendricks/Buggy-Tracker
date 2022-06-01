@@ -21,9 +21,10 @@ projectForm.addEventListener('submit', async e => {
 
 async function index() {
   try {
-    let projects: Project[] = await invoke('read_project');
+    let projects: Map<string, Project> = new Map(Object.entries(await invoke('read_project')));
+    let index = 0;
 
-    projects.forEach((project, index) => {
+    projects.forEach((project, id) => {
       const clone = baseEl.cloneNode(true) as HTMLDivElement
       clone.id = index.toString()
 
@@ -36,12 +37,12 @@ async function index() {
 
       projectName.innerText = project.name;
 
-      link.setAttribute("href", `./project.html?id=${index}`);
+      link.setAttribute("href", `./project.html?id=${id}`);
 
       deleteButton.addEventListener("click", async e => {
         try {
           await invoke("delete_project", { 
-            id: index,
+            id,
           })
           location.reload();
         } catch (error) {
@@ -61,7 +62,7 @@ async function index() {
           try {
             await invoke('update_project', {
               name: editName.value, 
-              id: index,
+              id,
             })
             location.reload();
           } catch (error) {
@@ -71,6 +72,7 @@ async function index() {
       })
 
       clone.hidden = false
+      index++;
     })
   } catch (error) {
     console.error(error)
