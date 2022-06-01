@@ -16,8 +16,8 @@ pub struct Issue {
 }
 
 #[tauri::command]
-pub fn create_project(name: String) {
-  let mut projects = read_project();
+pub async fn create_project(name: String) {
+  let mut projects = read_project().await;
 
   projects.push(Project {
     name,
@@ -32,7 +32,7 @@ pub fn create_project(name: String) {
 }
 
 #[tauri::command]
-pub fn read_project() -> Vec<Project> {
+pub async fn read_project() -> Vec<Project> {
   let mut file = fs::read_to_string("data.json")
     .ok()
     .expect("Unable to read file");
@@ -45,8 +45,10 @@ pub fn read_project() -> Vec<Project> {
 }
 
 #[tauri::command]
-pub fn update_project(name: String, issues:Vec<Issue> , id: i32) {
-  let mut projects = read_project();
+pub async fn update_project(name: String, id: i32) {
+  let mut projects = read_project().await;
+
+  let issues = read_issue(id).await;
 
   projects[id as usize] = Project {
     name,
@@ -61,8 +63,8 @@ pub fn update_project(name: String, issues:Vec<Issue> , id: i32) {
 }
 
 #[tauri::command]
-pub fn delete_project(id: i32) {
-  let mut projects = read_project();
+pub async fn delete_project(id: i32) {
+  let mut projects = read_project().await;
 
   projects.remove(id as usize);
   
@@ -74,10 +76,10 @@ pub fn delete_project(id: i32) {
 }    
 
 #[tauri::command]
-pub fn create_issue(title: String, description: String, project_id: i32) {
-  let mut projects = read_project();
+pub async fn create_issue(title: String, description: String, project_id: i32) {
+  let mut projects = read_project().await;
   
-  let mut issue = read_issue(project_id);
+  let mut issue = read_issue(project_id).await;
 
   issue.push(Issue {
     title,
@@ -94,8 +96,8 @@ pub fn create_issue(title: String, description: String, project_id: i32) {
 }
 
 #[tauri::command]
-pub fn read_issue(project_id: i32) -> Vec<Issue> {
-  let projects = read_project();
+pub async fn read_issue(project_id: i32) -> Vec<Issue> {
+  let projects = read_project().await;
 
   let issues: Vec<Issue> = projects[project_id as usize].issues.clone();
   
@@ -103,10 +105,10 @@ pub fn read_issue(project_id: i32) -> Vec<Issue> {
 }
 
 #[tauri::command]
-pub fn update_issue(title: String, description: String, project_id: i32, id: i32) {
-  let mut projects = read_project();
+pub async fn update_issue(title: String, description: String, project_id: i32, id: i32) {
+  let mut projects = read_project().await;
   
-  let mut issue = read_issue(project_id);
+  let mut issue = read_issue(project_id).await;
 
   issue[id as usize] = Issue {
     title,
@@ -123,10 +125,10 @@ pub fn update_issue(title: String, description: String, project_id: i32, id: i32
 }
 
 #[tauri::command]
-pub fn delete_issue(id: i32, project_id: i32) {
-  let mut projects = read_project();
+pub async fn delete_issue(id: i32, project_id: i32) {
+  let mut projects = read_project().await;
   
-  let mut issue = read_issue(project_id);
+  let mut issue = read_issue(project_id).await;
 
   issue.remove(id as usize);
   

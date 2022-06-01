@@ -54,6 +54,7 @@ async function project() {
         const editDesc = document.getElementsByClassName("edit-desc")[index] as HTMLInputElement
   
         editForm.addEventListener("submit", async e => {
+          e.preventDefault()
           try {
             await invoke('update_issue', {
               title: editTitle.value, 

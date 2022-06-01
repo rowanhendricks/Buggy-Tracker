@@ -31,9 +31,44 @@ async function index() {
 
       const projectName = document.getElementsByClassName("name")[index] as HTMLElement;
       const link = document.getElementsByClassName("link")[index] as HTMLAnchorElement;
+      const deleteButton = document.getElementsByClassName("delete-button")[index] as HTMLButtonElement
+      const editButton = document.getElementsByClassName("edit-button")[index] as HTMLButtonElement
 
       projectName.innerText = project.name;
+
       link.setAttribute("href", `./project.html?id=${index}`);
+
+      deleteButton.addEventListener("click", async e => {
+        try {
+          await invoke("delete_project", { 
+            id: index,
+          })
+          location.reload();
+        } catch (error) {
+          console.error(error)
+        }
+      })
+  
+      editButton.addEventListener("click", e => {
+        const editForm = document.getElementsByClassName("edit-form")[index] as HTMLFormElement
+        editForm.hidden = false
+  
+        const editName = document.getElementsByClassName("edit-name")[index] as HTMLInputElement
+
+        console.log(editName)
+  
+        editForm.addEventListener("submit", async e => {
+          try {
+            await invoke('update_project', {
+              name: editName.value, 
+              id: index,
+            })
+            location.reload();
+          } catch (error) {
+            console.error(error)
+          }
+        })
+      })
 
       clone.hidden = false
     })

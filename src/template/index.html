@@ -8,16 +8,20 @@
 </head>
 <body>
   <form id="project-form">
-    <input type="text" id="name">
+    <input type="text" id="name" required>
     <button type="submit">Create</button>
   </form>
   <ul id="project-list">
 
   </ul>
   <li id="base-el" hidden>
-    <a class="link" href="">
-      <h1 class="name"></h1>
-    </a>
+    <a class="link" href=""><h1 class="name"></h1></a>
+    <button class="delete-button">🗑️</button>
+    <button class="edit-button">✏️</button>
+    <form class="edit-form" hidden>
+      <input type="text" placeholder="title" class="edit-name">
+      <button type="submit" hidden></button>
+    </form>
   </li>
 </body>
 </html>
