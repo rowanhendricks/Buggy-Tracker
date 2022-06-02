@@ -41,7 +41,7 @@ async function index() {
 
       projectName.innerText = project.name;
 
-      link.setAttribute("href", `./project.html?id=${id}`);
+      link.setAttribute("href", `./project.html/#${id}`);
 
       deleteButton.addEventListener("click", async e => {
         try {
@@ -54,7 +54,6 @@ async function index() {
         }
       })
   
-
       editButton.addEventListener("click", e => {
         editForm.hidden = false
   

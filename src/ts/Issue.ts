@@ -4,14 +4,13 @@ import { appWindow } from "../../node_modules/@tauri-apps/api/window";
 
 import "../style/issue.css";
 
-const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
+const id = window.location.hash.replace('#', '').split('/')
 
 async function issue() {
   try {
-    const issues: Map<string, Issue> = await invoke('read_issue', { projectId: params.projId });
+    const issues: Map<string, Issue> = await invoke('read_issue', { projectId: id[1] });
     
-    const issue = issues[params.id]
+    const issue = issues[id[0]]
 
     const title = document.getElementById('title')
     const description = document.getElementById('description')

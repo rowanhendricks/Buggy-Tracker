@@ -9,18 +9,17 @@ const baseItem = document.getElementById("base-item")
 const createIssue = document.getElementById("create-issue") as HTMLAnchorElement
 const legend = document.getElementById("legend-title") as HTMLLegendElement
 
-const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
+const id = window.location.hash.replace('#', '')
 
 async function project() {
   try {
     const project: Map<string, Project> = await invoke("read_project")
-    const issues: Map<string, Issue> = await invoke('read_issue', { projectId: params.id });
+    const issues: Map<string, Issue> = await invoke('read_issue', { projectId: id });
     
-    appWindow.setTitle(project[params.id].name)
-    legend.innerText = project[params.id].name
+    appWindow.setTitle(project[id].name)
+    legend.innerText = project[id].name
 
-    createIssue.setAttribute('href', `/createIssue.html?id=${params.id}`)
+    createIssue.setAttribute('href', `/createIssue.html/#${id}`)
 
     Object.keys(issues).forEach((key, index) => {
       const clone = baseItem.cloneNode(true) as HTMLDivElement
@@ -35,13 +34,13 @@ async function project() {
   
       title.innerText = issues[key].title
   
-      link.setAttribute("href", `./issue.html?id=${key}&projId=${params.id}`)
+      link.setAttribute("href", `/issue.html/#${key}/${id}`)
   
       deleteButton.addEventListener("click", async e => {
         try {
           await invoke("delete_issue", { 
             issueId: key, 
-            projectId: params.id,
+            projectId: id,
           })
           location.reload();
         } catch (error) {
@@ -63,7 +62,7 @@ async function project() {
               title: editTitle.value, 
               description: editDesc.value,
               issueId: key,
-              projectId: params.id,
+              projectId: id,
             })
             location.reload();
           } catch (error) {
