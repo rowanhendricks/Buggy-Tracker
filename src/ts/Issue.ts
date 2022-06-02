@@ -4,7 +4,7 @@ import { appWindow } from "../../node_modules/@tauri-apps/api/window";
 
 import "../style/issue.css";
 
-const id = window.location.hash.replace('#', '').split('/')
+const id = location.hash.replace('#', '').split('/')
 
 async function issue() {
   try {

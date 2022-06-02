@@ -1,5 +1,6 @@
 use std::collections::HashMap;
-use std::fs;
+use std::fs::{write};
+use tauri::api::file::read_string;
 
 use serde::{Deserialize, Serialize};
 
@@ -27,14 +28,14 @@ pub fn create_project(name: String) {
     .ok()
     .expect("Unable to write file");
 
-  fs::write("data.json", projects_json)
+  write("data.json", projects_json)
     .ok()
     .expect("Unable to write file");
 }
 
 #[tauri::command]
 pub fn read_project() -> HashMap<String, Project> {
-  let mut file = fs::read_to_string("data.json")
+  let mut file = read_string("data.json")
     .ok()
     .expect("Unable to read file");
   
@@ -56,14 +57,16 @@ pub fn update_project(name: String, id: String) {
         issues: read_issue(id),
       };
     },
-    None => todo!(),
+    None => {
+      println!("Project not found");
+    },
   }
 
   let projects_json = serde_json::to_string(&projects)
     .ok()
     .expect("Unable to write file");
 
-  fs::write("data.json", projects_json)
+  write("data.json", projects_json)
     .ok()
     .expect("Unable to write file");
 }
@@ -78,7 +81,7 @@ pub fn delete_project(id: String) {
     .ok()
     .expect("Unable to write file");
 
-  fs::write("data.json", projects_json)
+  write("data.json", projects_json)
     .ok()
     .expect("Unable to write file");
 }   

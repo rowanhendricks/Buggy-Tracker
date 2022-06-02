@@ -1,6 +1,19 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+let htmlPageNames = ['index', 'createIssue', 'issue', 'project'];
+
+let htmlPlugins = htmlPageNames.map(name => {
+  return new HtmlWebpackPlugin({
+    scriptLoading: 'module',
+    publicPath: 'auto',
+    inject: 'body',
+    template: `./src/template/${name}.html`,
+    filename: `${name}.html`,
+    chunks: [`${name}`]
+  })
+});
+
 module.exports = {
   mode: "development",
   devtool: 'inline-source-map',
@@ -41,47 +54,7 @@ module.exports = {
     port: 8080
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Buggy Tracker',
-      filename: 'index.html',
-      template: './src/template/index.html',
-      scriptLoading: 'module',
-      publicPath: 'auto',
-      inject: 'body',
-      chunks: [
-        'index',
-      ]
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Create Issue',
-      filename: 'createIssue.html',
-      template: './src/template/createIssue.html',
-      scriptLoading: 'module',
-      inject: 'body',
-      chunks: [
-        'createIssue',
-      ]
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Issue',
-      filename: 'issue.html',
-      template: './src/template/issue.html',
-      scriptLoading: 'module',
-      inject: 'body',
-      chunks: [
-        'issue',
-      ]
-    }),    
-    new HtmlWebpackPlugin({
-      title: 'Project',
-      filename: 'project.html',
-      template: './src/template/project.html',
-      scriptLoading: 'module',
-      inject: 'body',
-      chunks: [
-        'project',
-      ]
-    }),
+    ...htmlPlugins,
     new MiniCssExtractPlugin({
       filename: '[name].css',
     })

@@ -9,7 +9,7 @@ const baseItem = document.getElementById("base-item")
 const createIssue = document.getElementById("create-issue") as HTMLAnchorElement
 const legend = document.getElementById("legend-title") as HTMLLegendElement
 
-const id = window.location.hash.replace('#', '')
+const id = location.hash.replace('#', '')
 
 async function project() {
   try {

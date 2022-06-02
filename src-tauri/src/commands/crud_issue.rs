@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use std::fs;
+use std::fs::{write};
 
 use serde::{Deserialize, Serialize};
 
@@ -33,14 +33,16 @@ pub fn create_issue(title: String, description: String, project_id: String) {
         issues,
       };
     },
-    None => todo!(),
+    None => {
+      println!("Project not found");
+    },
   }
 
   let projects_json = serde_json::to_string(&projects)
     .ok()
     .expect("Unable to write file");
 
-  fs::write("data.json", projects_json)
+  write("data.json", projects_json)
     .ok()
     .expect("Unable to write file");
 }
@@ -67,7 +69,9 @@ pub fn update_issue(title: String, description: String, issue_id: String, projec
         description,
       };
     },
-    None => todo!(),
+    None => {
+      println!("Project not found");
+    },
   }
 
   match projects.get_mut(&project_id) {
@@ -77,14 +81,16 @@ pub fn update_issue(title: String, description: String, issue_id: String, projec
         issues,
       };
     },
-    None => todo!(),
+    None => {
+      println!("Project not found");
+    },
   }
 
   let projects_json = serde_json::to_string(&projects)
     .ok()
     .expect("Unable to write file");
 
-  fs::write("data.json", projects_json)
+  write("data.json", projects_json)
     .ok()
     .expect("Unable to write file");
 }
@@ -104,14 +110,16 @@ pub fn delete_issue(issue_id: String, project_id: String) {
         issues,
       };
     },
-    None => todo!(),
+    None => {
+      println!("Project not found");
+    },
   }
 
   let projects_json = serde_json::to_string(&projects)
     .ok()
     .expect("Unable to write file");
 
-  fs::write("data.json", projects_json)
+  write("data.json", projects_json)
     .ok()
     .expect("Unable to write file");
 }    
