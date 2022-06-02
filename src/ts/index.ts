@@ -21,6 +21,8 @@ projectForm.addEventListener('submit', async e => {
 
 async function index() {
   try {
+    appWindow.setTitle('Buggy Tracker')
+    
     let projects: Map<string, Project> = new Map(Object.entries(await invoke('read_project')));
     let index = 0;
 
@@ -34,6 +36,8 @@ async function index() {
       const link = document.getElementsByClassName("link")[index] as HTMLAnchorElement;
       const deleteButton = document.getElementsByClassName("delete-button")[index] as HTMLButtonElement
       const editButton = document.getElementsByClassName("edit-button")[index] as HTMLButtonElement
+      const editForm = document.getElementsByClassName("edit-form")[index] as HTMLFormElement
+      const editName = document.getElementsByClassName("edit-name")[index] as HTMLInputElement
 
       projectName.innerText = project.name;
 
@@ -50,13 +54,9 @@ async function index() {
         }
       })
   
-      editButton.addEventListener("click", e => {
-        const editForm = document.getElementsByClassName("edit-form")[index] as HTMLFormElement
-        editForm.hidden = false
-  
-        const editName = document.getElementsByClassName("edit-name")[index] as HTMLInputElement
 
-        console.log(editName)
+      editButton.addEventListener("click", e => {
+        editForm.hidden = false
   
         editForm.addEventListener("submit", async e => {
           try {
