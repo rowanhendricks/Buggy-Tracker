@@ -2,8 +2,6 @@ import { Issue } from "types";
 import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
 import { appWindow } from "../../node_modules/@tauri-apps/api/window";
 
-import "../style/issue.css";
-
 const id = location.hash.replace('#', '').split('/')
 
 async function issue() {

@@ -1,5 +1,4 @@
 import { Project, Issue } from "types";
-import "../style/project.css";
 import { appWindow } from "../../node_modules/@tauri-apps/api/window";
 import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
 

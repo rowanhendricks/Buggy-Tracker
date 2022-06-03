@@ -1,11 +1,15 @@
 use std::collections::HashMap;
-use std::fs::write;
+use std::fs::{write, create_dir_all};
 use tauri::api::file::read_string;
 
 use serde::{Deserialize, Serialize};
 
+use crate::AppState;
+
 use super::crud_issue::{read_issue, Issue};
 use super::util::generate_id;
+
+const DATABASEFOLDER: &str = ".DATABASE";
 
 #[derive(Serialize, Deserialize)]
 pub struct Project {
@@ -14,8 +18,8 @@ pub struct Project {
 }
 
 #[tauri::command]
-pub fn create_project(name: String) {
-  let mut projects = read_project();
+pub fn create_project(state: tauri::State<AppState>, name: String) {
+  let mut projects = read_project(state.clone());
 
   projects.insert(
     generate_id(projects.len() as u64), 
@@ -28,33 +32,57 @@ pub fn create_project(name: String) {
     .ok()
     .expect("Unable to write file");
 
-  write("data.json", projects_json)
+  let database_path = state.app_dir.join(DATABASEFOLDER);
+    
+  if !database_path.is_dir() {
+    create_dir_all(&database_path).expect("Damn cannot create the dir");
+  }
+  
+  write(database_path.join("data.json"), projects_json)
     .ok()
     .expect("Unable to write file");
 }
 
 #[tauri::command]
-pub fn read_project() -> HashMap<String, Project> {
-  let mut file = read_string("data.json")
-    .ok()
-    .expect("Unable to read file");
+pub fn read_project(state: tauri::State<AppState>) -> HashMap<String, Project> {
+  let database_path = state.app_dir.join(DATABASEFOLDER);
+
+  if !database_path.is_dir() {
+    create_dir_all(&database_path).expect("Damn cannot create the dir");
+  }
+
+  let file = read_string(database_path.join("data.json"))
+    .ok();
   
-  let data: HashMap<String, Project> = serde_json::from_str(&mut file)
-    .ok()
-    .expect("error while parsing json");
+  match file {
+    Some(f) => {
+      let projects: HashMap<String, Project> = serde_json::from_str(&f)
+        .ok()
+        .expect("Unable to read file");
+
+      return projects;
+    },
+    None => {
+      let contents = "{}";
+
+      write(database_path.join("data.json"), contents)
+        .ok()
+        .expect("Unable to write file");
   
-  data
+      return HashMap::new();
+    },
+  }
 }
 
 #[tauri::command]
-pub fn update_project(name: String, id: String) {
-  let mut projects = read_project();
+pub fn update_project(state: tauri::State<AppState>, name: String, id: String) {
+  let mut projects = read_project(state.clone());
 
   match projects.get_mut(&id) {
     Some(p) => {
       *p = Project {
         name,
-        issues: read_issue(id),
+        issues: read_issue(state.clone(), id),
       };
     },
     None => {
@@ -66,14 +94,20 @@ pub fn update_project(name: String, id: String) {
     .ok()
     .expect("Unable to write file");
 
-  write("data.json", projects_json)
+  let database_path = state.app_dir.join(DATABASEFOLDER);
+    
+  if !database_path.is_dir() {
+    create_dir_all(&database_path).expect("Damn cannot create the dir");
+  }
+
+  write(database_path.join("data.json"), projects_json)
     .ok()
     .expect("Unable to write file");
 }
 
 #[tauri::command]
-pub fn delete_project(id: String) {
-  let mut projects = read_project();
+pub fn delete_project(state: tauri::State<AppState>, id: String) {
+  let mut projects = read_project(state.clone());
 
   projects.remove(&id);
   
@@ -81,7 +115,13 @@ pub fn delete_project(id: String) {
     .ok()
     .expect("Unable to write file");
 
-  write("data.json", projects_json)
+  let database_path = state.app_dir.join(DATABASEFOLDER);
+    
+  if !database_path.is_dir() {
+    create_dir_all(&database_path).expect("Damn cannot create the dir");
+  }
+
+  write(database_path.join("data.json"), projects_json)
     .ok()
     .expect("Unable to write file");
 }   

@@ -1,5 +1,5 @@
 import { Project } from "types";
-import "../style/index.css";
+
 import { appWindow } from "../../node_modules/@tauri-apps/api/window";
 import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
 

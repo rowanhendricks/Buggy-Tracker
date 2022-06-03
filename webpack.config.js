@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 
 let htmlPageNames = ['index', 'createIssue', 'issue', 'project'];
 
@@ -16,7 +16,6 @@ let htmlPlugins = htmlPageNames.map(name => {
 
 module.exports = {
   mode: "development",
-  devtool: 'inline-source-map',
   entry: {
     index: './src/ts/index.ts',
     issue: './src/ts/issue.ts',
@@ -30,14 +29,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.html$/i,
-        loader: "html-loader",
-      },
-      {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
       {
         test: /\.ts?$/,
         use: 'ts-loader',
@@ -55,8 +46,11 @@ module.exports = {
   },
   plugins: [
     ...htmlPlugins,
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    })
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new HtmlMinimizerPlugin(),
+    ],
+  },
 }
