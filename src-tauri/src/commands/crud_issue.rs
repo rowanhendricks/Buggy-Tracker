@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use std::fs::{write};
+use std::fs::write;
 
 use serde::{Deserialize, Serialize};
 
