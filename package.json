@@ -6,12 +6,12 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.0.0-rc.5",
+    "@tauri-apps/api": "^1.0.0-rc.6",
     "css-loader": "^6.7.1",
     "html-loader": "^3.1.0"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.0.0-rc.11",
+    "@tauri-apps/cli": "^1.0.0-rc.13",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
     "ts-loader": "^9.3.0",
