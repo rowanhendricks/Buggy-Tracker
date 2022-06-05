@@ -1,9 +1,12 @@
 const CreateIssue = () => {
   return (
-    <div>
-      <h1>CreateIssue</h1>
-      <p>This is the CreateIssue</p>
-    </div>
+    <form>
+      <label htmlFor="title">Title: </label>
+      <input type="text" id="title" required/><br/>
+      <label htmlFor="description">Description: </label>
+      <input type="text" id="description" required/><br/>
+      <button type="submit">Create</button>
+    </form>
   );
 }
 
