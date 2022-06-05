@@ -11,9 +11,9 @@ export function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/projects" element={<Projects/>}/>
-        <Route path="/createIssue" element={<CreateIssue/>}/>
+        <Route path="/createIssue/:project_id" element={<CreateIssue/>}/>
         <Route path="/project/:project_id" element={<Project/>}/>
-        <Route path="/issue/:issue_id" element={<Issue/>}/>
+        <Route path="/issue/:project_id:/issue_id" element={<Issue/>}/>
       </Routes>
     </BrowserRouter>
   )
