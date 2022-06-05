@@ -75,14 +75,14 @@ pub fn read_project(state: tauri::State<AppState>) -> HashMap<String, Project> {
 }
 
 #[tauri::command]
-pub fn update_project(state: tauri::State<AppState>, name: String, id: String) {
+pub fn update_project(state: tauri::State<AppState>, name: String, project_id: String) {
   let mut projects = read_project(state.clone());
 
-  match projects.get_mut(&id) {
+  match projects.get_mut(&project_id) {
     Some(p) => {
       *p = Project {
         name,
-        issues: read_issue(state.clone(), id),
+        issues: read_issue(state.clone(), project_id),
       };
     },
     None => {
@@ -106,10 +106,10 @@ pub fn update_project(state: tauri::State<AppState>, name: String, id: String) {
 }
 
 #[tauri::command]
-pub fn delete_project(state: tauri::State<AppState>, id: String) {
+pub fn delete_project(state: tauri::State<AppState>, project_id: String) {
   let mut projects = read_project(state.clone());
 
-  projects.remove(&id);
+  projects.remove(&project_id);
   
   let projects_json = serde_json::to_string(&projects)
     .ok()
