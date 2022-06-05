@@ -1,16 +1,12 @@
+import { TIssue } from "./types";
 import { appWindow } from "@tauri-apps/api/window";
 import { invoke } from "@tauri-apps/api/tauri";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-interface Issue {
-  title: string;
-  description: string;
-}
-
 const Issue = () => {
-  const [issues, setIssues] = useState<Map<string, Issue>>(new Map());
-  const {projectId, issueId} = useParams()
+  const [issues, setIssues] = useState<Map<string, TIssue>>(new Map());
+  const { projectId, issueId } = useParams()
 
   useEffect(() => {
     const getData = async () => {
@@ -20,7 +16,7 @@ const Issue = () => {
   }, [])
   
   try {
-    const issue: Issue = issues.get(issueId!)! ?? { title: "", description: "" };
+    const issue: TIssue = issues.get(issueId!)! ?? { title: "", description: "" };
 
     appWindow.setTitle(issue.title ?? "Project");
 

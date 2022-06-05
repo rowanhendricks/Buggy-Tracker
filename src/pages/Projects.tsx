@@ -1,20 +1,11 @@
 import { invoke } from "@tauri-apps/api/tauri";
+import { TProject } from "./types";
 import { appWindow } from "@tauri-apps/api/window";
 import { useState, FormEvent, MouseEvent, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export interface Project {
-  name: string;
-  issues: Map<string, Issue>;
-}
-
-export interface Issue {
-  title: string;
-  description: string;
-}
-
 const Projects = () => {
-  const [projects, setProjects] = useState<Map<string, Project>>(new Map());
+  const [projects, setProjects] = useState<Map<string, TProject>>(new Map());
   const [name, setName] = useState("");
   const [editName, setEditName] = useState("");
 

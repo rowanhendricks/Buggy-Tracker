@@ -6,7 +6,7 @@ const CreateIssue = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
-  const {projectId} = useParams()
+  const { projectId } = useParams()
   
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
