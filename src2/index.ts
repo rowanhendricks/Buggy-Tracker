@@ -1,7 +1,7 @@
-import { Project } from "types";
+import { Project } from "./types";
 
-import { appWindow } from "../../node_modules/@tauri-apps/api/window";
-import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
+import { appWindow } from "@tauri-apps/api/window";
+import { invoke } from "@tauri-apps/api/tauri";
 
 const projectForm = document.getElementById("project-form") as HTMLFormElement;
 const name = document.getElementById("name") as HTMLInputElement;

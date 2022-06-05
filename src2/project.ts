@@ -1,6 +1,6 @@
-import { Project, Issue } from "types";
-import { appWindow } from "../../node_modules/@tauri-apps/api/window";
-import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
+import { Project, Issue } from "./types";
+import { appWindow } from "@tauri-apps/api/window";
+import { invoke } from "@tauri-apps/api/tauri";
 
 const searchBar = document.getElementById("search-bar") as HTMLInputElement
 const list = document.getElementById("list")

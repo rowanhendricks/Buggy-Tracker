@@ -1,4 +1,4 @@
-import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
+import { invoke } from "@tauri-apps/api/tauri";
 
 const issueForm = document.getElementById("issue-form") as HTMLFormElement
 const title = document.getElementById("title") as HTMLInputElement

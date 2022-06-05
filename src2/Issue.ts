@@ -1,6 +1,6 @@
-import { Issue } from "types";
-import { invoke } from "../../node_modules/@tauri-apps/api/tauri";
-import { appWindow } from "../../node_modules/@tauri-apps/api/window";
+import { Issue } from "./types";
+import { appWindow } from "@tauri-apps/api/window";
+import { invoke } from "@tauri-apps/api/tauri";
 
 const id = location.hash.replace('#', '').split('/')
 
