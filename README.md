@@ -77,7 +77,7 @@ running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Use this to install new dependencies, or to update existing dependencies.
 
 *
 ```sh
