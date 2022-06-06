@@ -1,3 +1,4 @@
+import { TextInput, Button } from "@mantine/core";
 import { invoke } from "@tauri-apps/api/tauri";
 import { FormEvent, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -24,11 +25,15 @@ const CreateIssue = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title: </label>
-      <input type="text" id="title" onChange={e => {setTitle(e.target.value)}} required/><br/>
-      <label htmlFor="description">Description: </label>
-      <input type="text" id="description" onChange={e => {setDescription(e.target.value)}} required/><br/>
-      <button type="submit">Create</button>
+      <TextInput 
+        label="Title:"
+        onChange={e => {setTitle(e.target.value)}}
+      />
+      <TextInput 
+        label="Description:"
+        onChange={e => {setDescription(e.target.value)}}
+      />
+      <Button type="submit">Create</Button>
     </form>
   );
 }

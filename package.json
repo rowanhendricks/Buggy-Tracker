@@ -14,8 +14,7 @@
     "@tauri-apps/api": "^1.0.0-rc.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-router-dom": "^6.3.0",
-    "vite-plugin-compress": "^2.1.1"
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.0.0-rc.13",

@@ -21,7 +21,7 @@ pub struct AppState {
   pub app_dir: PathBuf,
 }
 
-fn main() { 
+fn main() {
   tauri::Builder::default()
     .menu(generate_menu())
     .on_menu_event(menu_handler)

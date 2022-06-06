@@ -2,6 +2,7 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { TProject } from "./types";
 import { appWindow } from "@tauri-apps/api/window";
 import { useState, FormEvent, MouseEvent, useEffect } from "react";
+import { Input, Button } from '@mantine/core';
 import { Link } from "react-router-dom";
 
 const Projects = () => {
@@ -57,12 +58,19 @@ const Projects = () => {
     for (const [key, value] of projects) {
       list.push(
         <li key={key}>
-          <Link to={`/project/${key}`}><h1>{value.name}</h1></Link>
-          <button onClick={e => (handleDelete(e, key))}>🗑️</button>
-          <button onClick={e => {}}>✏️</button>
+          <Link to={`/project/${key}`}>
+              <h1>{value.name}</h1>
+          </Link>
+          <Button 
+            onClick={(e: MouseEvent<HTMLButtonElement>) => (
+              handleDelete(e, key
+          ))}>🗑️</Button>
+          <Button onClick={(e: MouseEvent<HTMLButtonElement>) => {
+            
+          }}>✏️</Button>
           <form onSubmit={e => {handleEditSubmit(e, editName, key)}}>
             <input type="text" placeholder="title" onChange={e => setEditName(e.target.value)}/>
-            <button type="submit" hidden></button>
+            <Button type="submit" hidden></Button>
           </form>
         </li>
       );
@@ -71,8 +79,14 @@ const Projects = () => {
     return (
       <div>
         <form onSubmit={handleProjectSubmit}>
-          <input type="text" onChange={e => {setName(e.target.value)}} required/>
-          <button type="submit">Create</button>
+          <Input 
+            type="text"
+            onChange={(e: FormEvent) => {
+              setName((e.target as HTMLInputElement).value)
+            }} 
+            required
+          />
+          <Button type="submit">Create</Button>
         </form>
         <ul>
           {list ?? <li key="0">No projects</li>}
