@@ -9,7 +9,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ShungJung/Buggy-Tracker">
-    <img src="images/BuggyLogo.png" alt="Logo" width="80" height="80">
+    <img src="images/BuggyLogoBig.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Buggy-Tracker</h3>
