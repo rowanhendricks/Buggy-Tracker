@@ -105,3 +105,6 @@ dist
 
 # Data
 data.json
+
+# Jetbrains
+.idea

@@ -12,7 +12,7 @@
     <img src="images/BuggyLogoLarge.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Buggy-Tracker</h3>
+<h3 align="center">Buggy-Tracker</h3>
 
   <p align="center">
     Buggy-Tracker subtitle
@@ -53,8 +53,6 @@
   </ol>
 </details>
 
-
-
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://google.com)
@@ -63,33 +61,33 @@ About the project
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 ### Built With
-This is the list of all major frameworks/libraries used to created this project. Any add-ons or plugins are in the acknowledgements section.
+
+This is the list of all major frameworks/libraries used to created this project. Any add-ons or plugins are in the
+acknowledgements section.
 
 * [Tauri](https://tauri.studio/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This is an example of how you may give instructions on setting up your project locally. To get a local copy up and
+running follow these simple example steps.
 
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* 
-  ```sh
-  npm install npm@latest -g
-  ```
+
+*
+```sh
+npm install npm@latest -g
+```
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't
+rely on any external dependencies or services._
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -107,15 +105,14 @@ _Below is an example of how you can instruct your audience on installing and set
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos
+work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://google.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Roadmap
 
@@ -127,17 +124,18 @@ _For more examples, please refer to the [Documentation](https://google.com)_
     - [ ] Chinese
     - [ ] Spanish
 
-See the [open issues](https://github.com/ShungJung/Buggy-Tracker/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/ShungJung/Buggy-Tracker/issues) for a full list of proposed features (and known
+issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any
+contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also
+simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -147,27 +145,25 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 ## Contact
 
-ShungJung - [dawger#0657](https://discord.com) - shung.jung.1@gmail.com
-KielKing - [@GitHub](https://github.com/KielKing) - me@kielking.com
+ShungJung - [dawger#0657](https://discord.com) - shung.jung.1@gmail.com KielKing
+- [@GitHub](https://github.com/KielKing) - me@kielking.com
 
 Project Link: [https://github.com/ShungJung/Buggy-Tracker](https://github.com/ShungJung/Buggy-Tracker)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites
+to kick things off!
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
@@ -182,13 +178,23 @@ Use this space to list resources you find helpful and would like to give credit 
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+
 [contributors-url]: https://github.com/ShungJung/Buggy-Tracker/graphs/contributors
+
 [forks-shield]: https://img.shields.io/github/forks/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+
 [forks-url]: https://github.com/ShungJung/Buggy-Tracker/network/members
+
 [stars-shield]: https://img.shields.io/github/stars/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+
 [stars-url]: https://github.com/ShungJung/Buggy-Tracker/stargazers
+
 [issues-shield]: https://img.shields.io/github/issues/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+
 [issues-url]: https://github.com/ShungJung/Buggy-Tracker/issues
+
 [license-shield]: https://img.shields.io/github/license/ShungJung/Buggy-Tracker.svg?style=for-the-badge
+
 [license-url]: https://github.com/ShungJung/Buggy-Tracker/blob/master/LICENSE.txt
+
 [product-screenshot]: images/screenshot.png
