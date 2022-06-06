@@ -40,7 +40,7 @@ fn main(){
             };
             app.manage(state);
 
-            Ok(())
+            Ok(());
         })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
